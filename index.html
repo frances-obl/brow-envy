@@ -453,7 +453,7 @@
       align-items: center;
       justify-content: center;
       padding: clamp(24px, 3.5vh, 52px) 80px;
-      gap: clamp(10px, 1.8vh, 24px);
+      gap: 0;
     }
 
     /* ── Unified services layout ── */
@@ -484,6 +484,7 @@
     .service-photo {
       width: 100%;
       aspect-ratio: 4 / 3;
+      max-height: clamp(100px, 14vh, 175px);
       object-fit: cover;
       object-position: center 20%;
       display: block;
