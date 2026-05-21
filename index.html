@@ -630,6 +630,74 @@
     }
 
     /* ────────────────────────────────────────
+       BOOKING MODAL
+    ──────────────────────────────────────── */
+    #booking-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26, 22, 18, 0.52);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    #booking-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-card {
+      background: #c8c0b4;
+      border: 1.5px solid rgba(237, 234, 228, 0.55);
+      border-radius: 18px;
+      padding: clamp(40px, 6vw, 72px) clamp(48px, 8vw, 96px);
+      max-width: 540px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    }
+
+    #booking-modal.open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #5a5248;
+      opacity: 0.55;
+      transition: opacity 0.2s ease;
+      line-height: 1;
+      padding: 4px 6px;
+    }
+
+    .modal-close:hover { opacity: 1; }
+
+    .modal-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(19px, 2.2vw, 26px);
+      font-weight: 400;
+      color: #2e271f;
+      letter-spacing: 0.03em;
+      line-height: 1.9;
+    }
+
+    /* ────────────────────────────────────────
        RESPONSIVE
     ──────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -659,7 +727,7 @@
       <li><a href="#" onclick="goTo(3);return false;">Services</a></li>
       <li><a href="#" onclick="goTo(4);return false;">Contact</a></li>
     </ul>
-    <a href="#" class="nav-book" onclick="goTo(3);return false;">Book Now</a>
+    <a href="#" class="nav-book" onclick="openModal();return false;">Book Now</a>
   </nav>
 
   <!-- PROGRESS DOTS -->
@@ -690,7 +758,7 @@
 
       <div class="hero-body">
         <h1 class="hero-title">Brow Envy</h1>
-        <a href="#" class="hero-btn" onclick="goTo(3);return false;">Book Your Experience</a>
+        <a href="#" class="hero-btn" onclick="openModal();return false;">Book Your Experience</a>
       </div>
 
       <div class="scroll-cue">
@@ -836,17 +904,17 @@
           <div class="service-card reveal">
             <img src="images/brow-threading.png" alt="Eyebrow Threading" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Eyebrow Threading</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
           <div class="service-card reveal d1">
             <img src="images/brow-tinting.png" alt="Eyebrow Tinting" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Eyebrow Tinting</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
           <div class="service-card reveal d2">
             <img src="images/brow-lamination.png" alt="Eyebrow Lamination" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Eyebrow Lamination</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
         </div>
 
@@ -855,22 +923,22 @@
           <div class="service-card reveal">
             <img src="images/lash-lamination.png" alt="Lash Lamination" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Lash Lamination</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
           <div class="service-card reveal d1">
             <img src="images/lash-lift.png" alt="Lash Lift &amp; Tint" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Lash Lift &amp; Tint</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
           <div class="service-card reveal d2">
             <img src="images/lash-removal.png" alt="Lash Removal" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Lash Removal</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
           <div class="service-card reveal d3">
             <img src="images/lash-care.png" alt="Lash Care" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Lash Care</span>
-            <a href="#" class="service-btn">Book Now</a>
+            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
           </div>
         </div>
       </div>
@@ -934,6 +1002,14 @@
 
   </div><!-- /snap -->
 
+  <!-- BOOKING MODAL -->
+  <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Book an appointment">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close booking modal" onclick="closeModal()">&#215;</button>
+      <p class="modal-line">Phone: 954.538.3383</p>
+      <p class="modal-line">Email: info@browenvy.com</p>
+    </div>
+  </div>
 
   <script>
     (function () {
@@ -951,6 +1027,28 @@
        * JS only handles: dot clicks, nav clicks, keyboard, and UI state updates.
        * No wheel or touch interception — that's what caused the rocket effect.
        */
+
+      /* ── Booking Modal ── */
+      const modal = document.getElementById('booking-modal');
+
+      function openModal() {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      window.openModal = openModal;
+      window.closeModal = closeModal;
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
 
       /* ── Navigate (dots / nav / keyboard only) ── */
       function goTo(index) {
