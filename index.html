@@ -283,18 +283,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 80px;
-      gap: 52px;
+      padding: clamp(28px, 4vh, 60px) 80px;
+      gap: clamp(16px, 3vh, 36px);
     }
 
     .about-heading {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 4.5vw, 56px);
+      font-size: clamp(28px, 4vw, 52px);
       font-weight: 400;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: #1a1a1a;
-      margin-bottom: 48px;
+      margin-bottom: 0;
       text-align: center;
     }
 
@@ -313,7 +313,7 @@
       -webkit-backdrop-filter: blur(22px);
       border: 1px solid rgba(255, 255, 255, 0.65);
       border-radius: 24px;
-      padding: 44px 20px 36px;
+      padding: clamp(20px, 2.8vh, 40px) 20px clamp(14px, 2vh, 30px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -349,7 +349,7 @@
 
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(48px, 5.5vw, 76px);
+      font-size: clamp(40px, 5vw, 68px);
       font-weight: 300;
       color: #1a1a1a;
       line-height: 1;
@@ -387,19 +387,20 @@
 
     .section-heading {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 3.2vw, 42px);
+      font-size: clamp(24px, 3vw, 40px);
       font-weight: 400;
       letter-spacing: 0.26em;
       text-transform: uppercase;
       color: #1a1a1a;
       text-align: center;
-      margin-bottom: 52px;
+      margin-bottom: clamp(18px, 3vh, 44px);
+      flex-shrink: 0;
     }
 
     .features {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px 100px;
+      gap: clamp(18px, 2.5vh, 28px) 100px;
       max-width: 860px;
       width: 100%;
     }
@@ -412,8 +413,8 @@
 
     .feature-icon {
       flex-shrink: 0;
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
     }
 
     .feature-icon svg {
@@ -451,22 +452,22 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 80px;
-      gap: 40px;
+      padding: clamp(24px, 3.5vh, 52px) 80px;
+      gap: clamp(10px, 1.8vh, 24px);
     }
 
     /* ── Unified services layout ── */
     .all-services {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: clamp(12px, 2vh, 20px);
       width: 100%;
       max-width: 1160px;
     }
 
     .svc-row {
       display: grid;
-      gap: 20px;
+      gap: clamp(12px, 1.5vw, 20px);
       width: 100%;
     }
 
@@ -477,16 +478,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: clamp(6px, 0.8vh, 10px);
     }
 
     .service-photo {
       width: 100%;
-      aspect-ratio: 16/10;
+      height: clamp(80px, 11.5vh, 155px);
       object-fit: cover;
-      object-position: center top;
+      object-position: center 20%;
       display: block;
       background: #c5bfb5;
+      flex-shrink: 0;
     }
 
     .service-name {
@@ -502,7 +504,7 @@
     .service-btn {
       display: inline-block;
       border: 1px solid #1a1a1a;
-      padding: 6px 20px;
+      padding: clamp(4px, 0.6vh, 6px) 20px;
       font-family: 'Montserrat', sans-serif;
       font-size: 8px;
       font-weight: 500;
@@ -529,8 +531,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 56px 80px;
-      gap: 36px;
+      padding: clamp(24px, 3.5vh, 52px) 80px;
+      gap: clamp(14px, 2.5vh, 28px);
     }
 
     /* legacy — kept so nothing breaks if referenced */
@@ -550,15 +552,17 @@
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.15fr;
-      gap: 18px;
+      gap: clamp(10px, 1.5vw, 18px);
       width: 100%;
       max-width: 1060px;
+      min-height: 0;
     }
 
     .contact-col {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: clamp(8px, 1.2vh, 14px);
+      min-height: 0;
     }
 
     .contact-card {
@@ -567,7 +571,7 @@
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 18px;
-      padding: 22px 28px;
+      padding: clamp(12px, 1.8vh, 22px) 28px;
       text-align: center;
       box-shadow: 0 4px 24px rgba(0,0,0,0.04);
       transition: box-shadow 0.35s ease, border-color 0.35s ease;
@@ -580,19 +584,19 @@
 
     .contact-card-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
       letter-spacing: 0.06em;
       color: #1a1a1a;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
     }
 
     .contact-card-body {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 300;
       color: #3a3530;
-      line-height: 1.75;
+      line-height: 1.65;
     }
 
     .contact-card-body strong {
@@ -605,7 +609,7 @@
     .contact-map {
       width: 100%;
       flex: 1;
-      min-height: 140px;
+      min-height: clamp(80px, 12vh, 140px);
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.55);
       overflow: hidden;
@@ -714,7 +718,7 @@
           <span class="stat-label">Years of Experience</span>
         </div>
         <div class="stat-card" data-count="text">
-          <span class="stat-num" style="font-size:clamp(32px,3.8vw,52px);letter-spacing:0.04em;">Trusted</span>
+          <span class="stat-num" style="font-size:clamp(28px,3.4vw,46px);letter-spacing:0.04em;">Trusted</span>
           <div class="stat-divider"></div>
           <span class="stat-label">Across South Florida Residents</span>
         </div>
