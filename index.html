@@ -417,24 +417,34 @@
       gap: 40px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+    /* ── Unified services layout ── */
+    .all-services {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       width: 100%;
-      max-width: 1080px;
+      max-width: 1160px;
     }
+
+    .svc-row {
+      display: grid;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .svc-row-3 { grid-template-columns: repeat(3, 1fr); }
+    .svc-row-4 { grid-template-columns: repeat(4, 1fr); }
 
     .service-card {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
 
     .service-photo {
       width: 100%;
-      aspect-ratio: 4/3;
+      aspect-ratio: 16/10;
       object-fit: cover;
       object-position: center top;
       display: block;
@@ -443,9 +453,9 @@
 
     .service-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 400;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: #1a1a1a;
       text-align: center;
@@ -454,9 +464,9 @@
     .service-btn {
       display: inline-block;
       border: 1px solid #1a1a1a;
-      padding: 8px 22px;
+      padding: 6px 20px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 8.5px;
+      font-size: 8px;
       font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -471,33 +481,6 @@
       background: #1a1a1a;
       color: #edeae4;
     }
-
-    /* Lash section grid: 3 + 1 centered */
-    .lash-rows {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
-      width: 100%;
-      max-width: 1080px;
-    }
-
-    .lash-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      width: 100%;
-    }
-
-    .lash-solo {
-      width: calc(33.333% - 9.333px); /* one column width accounting for gaps */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .lash-solo .service-photo { width: 100%; }
 
     /* ────────────────────────────────────────
        SECTION 6: CONTACT / SPECIALISTS
@@ -595,7 +578,7 @@
       <li><a href="#" onclick="goTo(0);return false;">Home</a></li>
       <li><a href="#" onclick="goTo(1);return false;">About</a></li>
       <li><a href="#" onclick="goTo(3);return false;">Services</a></li>
-      <li><a href="#" onclick="goTo(5);return false;">Contact</a></li>
+      <li><a href="#" onclick="goTo(4);return false;">Contact</a></li>
     </ul>
     <a href="#" class="nav-book" onclick="goTo(3);return false;">Book Now</a>
   </nav>
@@ -605,9 +588,8 @@
     <div class="dot active" onclick="goTo(0)" title="Home"></div>
     <div class="dot"        onclick="goTo(1)" title="About"></div>
     <div class="dot"        onclick="goTo(2)" title="Why Us"></div>
-    <div class="dot"        onclick="goTo(3)" title="Eyebrow Services"></div>
-    <div class="dot"        onclick="goTo(4)" title="Lash Services"></div>
-    <div class="dot"        onclick="goTo(5)" title="Contact"></div>
+    <div class="dot"        onclick="goTo(3)" title="Services"></div>
+    <div class="dot"        onclick="goTo(4)" title="Contact"></div>
   </div>
 
   <!-- SNAP WRAPPER -->
@@ -761,42 +743,32 @@
       </div>
     </section>
 
-    <!-- ── SECTION 4: SERVICES - EYEBROWS ── -->
-    <div class="services-wrap section" id="services-brow" data-index="3">
+    <!-- ── SECTION 4: SERVICES (all 7, one cohesive view) ── -->
+    <div class="services-wrap section" id="services" data-index="3">
       <h2 class="section-heading reveal">Services</h2>
 
-      <div class="services-grid">
-        <!--
-          Place service photos in the images/ folder:
-          brow-threading.jpg, brow-tinting.jpg, brow-lamination.jpg
-        -->
-        <div class="service-card reveal">
-          <img src="images/brow-threading.png" alt="Eyebrow Threading" class="service-photo" onerror="this.style.opacity='0'">
-          <span class="service-name">Eyebrow Threading</span>
-          <a href="#" class="service-btn">Book Now</a>
+      <div class="all-services">
+        <!-- Row 1: Eyebrow (3 cards) -->
+        <div class="svc-row svc-row-3">
+          <div class="service-card reveal">
+            <img src="images/brow-threading.png" alt="Eyebrow Threading" class="service-photo" onerror="this.style.opacity='0'">
+            <span class="service-name">Eyebrow Threading</span>
+            <a href="#" class="service-btn">Book Now</a>
+          </div>
+          <div class="service-card reveal d1">
+            <img src="images/brow-tinting.png" alt="Eyebrow Tinting" class="service-photo" onerror="this.style.opacity='0'">
+            <span class="service-name">Eyebrow Tinting</span>
+            <a href="#" class="service-btn">Book Now</a>
+          </div>
+          <div class="service-card reveal d2">
+            <img src="images/brow-lamination.png" alt="Eyebrow Lamination" class="service-photo" onerror="this.style.opacity='0'">
+            <span class="service-name">Eyebrow Lamination</span>
+            <a href="#" class="service-btn">Book Now</a>
+          </div>
         </div>
-        <div class="service-card reveal d1">
-          <img src="images/brow-tinting.png" alt="Eyebrow Tinting" class="service-photo" onerror="this.style.opacity='0'">
-          <span class="service-name">Eyebrow Tinting</span>
-          <a href="#" class="service-btn">Book Now</a>
-        </div>
-        <div class="service-card reveal d2">
-          <img src="images/brow-lamination.png" alt="Eyebrow Lamination" class="service-photo" onerror="this.style.opacity='0'">
-          <span class="service-name">Eyebrow Lamination</span>
-          <a href="#" class="service-btn">Book Now</a>
-        </div>
-      </div>
-    </div>
 
-    <!-- ── SECTION 5: SERVICES - LASHES ── -->
-    <div class="services-wrap section" id="services-lash" data-index="4">
-      <h2 class="section-heading reveal">Services</h2>
-
-      <div class="lash-rows">
-        <div class="lash-row">
-          <!--
-            lash-lamination.jpg, lash-lift.jpg, lash-removal.jpg, lash-care.jpg
-          -->
+        <!-- Row 2: Lash (4 cards) -->
+        <div class="svc-row svc-row-4">
           <div class="service-card reveal">
             <img src="images/lash-lamination.png" alt="Lash Lamination" class="service-photo" onerror="this.style.opacity='0'">
             <span class="service-name">Lash Lamination</span>
@@ -812,18 +784,17 @@
             <span class="service-name">Lash Removal</span>
             <a href="#" class="service-btn">Book Now</a>
           </div>
-        </div>
-
-        <div class="lash-solo reveal d3">
-          <img src="images/lash-care.png" alt="Lash Care" class="service-photo" onerror="this.style.opacity='0'">
-          <span class="service-name">Lash Care</span>
-          <a href="#" class="service-btn">Book Now</a>
+          <div class="service-card reveal d3">
+            <img src="images/lash-care.png" alt="Lash Care" class="service-photo" onerror="this.style.opacity='0'">
+            <span class="service-name">Lash Care</span>
+            <a href="#" class="service-btn">Book Now</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ── SECTION 6: CONTACT / SPECIALISTS ── -->
-    <section class="section" id="contact" data-index="5">
+    <!-- ── SECTION 5: CONTACT / SPECIALISTS ── -->
+    <section class="section" id="contact" data-index="4">
       <h2 class="section-heading reveal">Contact</h2>
 
       <div class="specialists-row">
