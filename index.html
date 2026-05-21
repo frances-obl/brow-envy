@@ -460,14 +460,9 @@
     .all-services {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(16px, 2.2vh, 32px) clamp(16px, 2vw, 28px);
+      gap: clamp(20px, 3.5vh, 48px) clamp(18px, 2vw, 30px);
       width: 100%;
       max-width: 1100px;
-    }
-
-    /* Center the lone 7th card when it sits by itself in a row */
-    .service-card:last-child:nth-child(3n + 1) {
-      grid-column: 2;
     }
 
     .service-card {
@@ -480,7 +475,6 @@
     .service-photo {
       width: 100%;
       aspect-ratio: 4 / 3;
-      max-height: clamp(100px, 14vh, 175px);
       object-fit: cover;
       object-position: center 20%;
       display: block;
@@ -949,11 +943,6 @@
         <div class="service-card reveal d3">
           <img src="images/lash-removal.png" alt="Lash Removal" class="service-photo" onerror="this.style.opacity='0'">
           <span class="service-name">Lash Removal</span>
-          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-        </div>
-        <div class="service-card reveal d2">
-          <img src="images/lash-care.png" alt="Lash Care" class="service-photo" onerror="this.style.opacity='0'">
-          <span class="service-name">Lash Care</span>
           <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
         </div>
       </div>
