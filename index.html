@@ -283,6 +283,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 60px 80px;
+      gap: 52px;
     }
 
     .about-heading {
@@ -296,43 +298,79 @@
       text-align: center;
     }
 
-    .stats-bar {
-      width: 100%;
-      background: #c5bfb5;
+    /* ── Glassmorphism stat cards ── */
+    .stats-cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      padding: 52px 80px;
+      gap: 18px;
+      width: 100%;
+      max-width: 1100px;
     }
 
-    .stat-item {
+    .stat-card {
+      background: rgba(255, 253, 249, 0.45);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 24px;
+      padding: 44px 20px 36px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 20px 28px;
-      border-right: 1px solid rgba(0,0,0,0.1);
+      gap: 12px;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity  0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset;
     }
 
-    .stat-item:last-child { border-right: none; }
+    .stat-card:nth-child(1) { transition-delay: 0.05s; }
+    .stat-card:nth-child(2) { transition-delay: 0.13s; }
+    .stat-card:nth-child(3) { transition-delay: 0.21s; }
+    .stat-card:nth-child(4) { transition-delay: 0.29s; }
+
+    .stat-card.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.9) inset;
+      border-color: rgba(255, 255, 255, 0.9);
+    }
 
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(42px, 5.5vw, 72px);
+      font-size: clamp(48px, 5.5vw, 76px);
       font-weight: 300;
       color: #1a1a1a;
       line-height: 1;
-      margin-bottom: 10px;
       display: block;
+      letter-spacing: -0.01em;
+    }
+
+    .stat-divider {
+      width: 32px;
+      height: 1px;
+      background: rgba(0,0,0,0.15);
+      flex-shrink: 0;
     }
 
     .stat-label {
       font-family: 'Montserrat', sans-serif;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 400;
-      letter-spacing: 0.03em;
-      color: #3a3530;
-      line-height: 1.45;
+      letter-spacing: 0.07em;
+      color: #5a5248;
+      line-height: 1.5;
     }
 
     /* ────────────────────────────────────────
@@ -491,21 +529,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 80px;
-      gap: 48px;
-    }
-
-    .specialists-row {
-      display: flex;
-      align-items: center;
+      padding: 56px 80px;
       gap: 36px;
-      width: 100%;
-      max-width: 920px;
     }
 
+    /* legacy — kept so nothing breaks if referenced */
     .specialists-label {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+      display: none;
       font-family: 'Montserrat', sans-serif;
       font-size: 9px;
       font-weight: 600;
@@ -516,34 +546,81 @@
       white-space: nowrap;
     }
 
-    .team-grid {
+    /* ── Contact grid ── */
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      flex: 1;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 18px;
+      width: 100%;
+      max-width: 1060px;
     }
 
-    .team-card {
+    .contact-col {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .team-photo {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      display: block;
-      background: #b5b0a8;
-    }
-
-    .team-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: #1a1a1a;
+    .contact-card {
+      background: rgba(197, 191, 181, 0.28);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 18px;
+      padding: 22px 28px;
       text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      transition: box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .contact-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+      border-color: rgba(255,255,255,0.8);
+    }
+
+    .contact-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .contact-card-body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11.5px;
+      font-weight: 300;
+      color: #3a3530;
+      line-height: 1.75;
+    }
+
+    .contact-card-body strong {
+      font-weight: 600;
+      color: #1a1a1a;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .contact-map {
+      width: 100%;
+      flex: 1;
+      min-height: 140px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.55);
+      overflow: hidden;
+      display: block;
+      filter: saturate(0.6) contrast(0.9);
+      transition: filter 0.35s ease;
+    }
+
+    .contact-map:hover { filter: saturate(0.85) contrast(0.95); }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
     }
 
     /* ────────────────────────────────────────
@@ -553,16 +630,12 @@
       #nav { padding: 20px 32px; }
       .nav-links { gap: 24px; }
       .hero-body { padding: 0 40px 72px; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 40px; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
-      .stat-item:nth-child(2n) { border-right: none; }
+      .stats-cards { grid-template-columns: repeat(2, 1fr); }
       .features { grid-template-columns: 1fr; gap: 24px; }
       #why-us { padding: 0 40px; }
-      .services-grid { grid-template-columns: 1fr; }
       .services-wrap { padding: 40px; }
-      .lash-row { grid-template-columns: 1fr; }
-      .lash-solo { width: 100%; }
-      .team-grid { grid-template-columns: 1fr; }
+      .svc-row-3, .svc-row-4 { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
       #contact { padding: 40px; }
       #dots { display: none; }
     }
@@ -620,25 +693,29 @@
       </div>
     </section>
 
-    <!-- ── SECTION 2: ABOUT (STATS) ── -->
+    <!-- ── SECTION 2: ABOUT (ANIMATED STATS) ── -->
     <section class="section" id="about" data-index="1">
       <h2 class="about-heading reveal">About</h2>
 
-      <div class="stats-bar">
-        <div class="stat-item reveal">
-          <span class="stat-num">100</span>
+      <div class="stats-cards">
+        <div class="stat-card" data-count="100" data-suffix="">
+          <span class="stat-num" data-target="100">0</span>
+          <div class="stat-divider"></div>
           <span class="stat-label">Happy Customers</span>
         </div>
-        <div class="stat-item reveal d1">
-          <span class="stat-num">4.7</span>
+        <div class="stat-card" data-count="4.7" data-suffix="" data-decimal="1">
+          <span class="stat-num" data-target="4.7">0</span>
+          <div class="stat-divider"></div>
           <span class="stat-label">Customer Satisfaction Rating</span>
         </div>
-        <div class="stat-item reveal d2">
-          <span class="stat-num">10</span>
+        <div class="stat-card" data-count="10" data-suffix="">
+          <span class="stat-num" data-target="10">0</span>
+          <div class="stat-divider"></div>
           <span class="stat-label">Years of Experience</span>
         </div>
-        <div class="stat-item reveal d3">
-          <span class="stat-num">Trusted</span>
+        <div class="stat-card" data-count="text">
+          <span class="stat-num" style="font-size:clamp(32px,3.8vw,52px);letter-spacing:0.04em;">Trusted</span>
+          <div class="stat-divider"></div>
           <span class="stat-label">Across South Florida Residents</span>
         </div>
       </div>
@@ -793,30 +870,59 @@
       </div>
     </div>
 
-    <!-- ── SECTION 5: CONTACT / SPECIALISTS ── -->
+    <!-- ── SECTION 5: CONTACT ── -->
     <section class="section" id="contact" data-index="4">
       <h2 class="section-heading reveal">Contact</h2>
 
-      <div class="specialists-row">
-        <span class="specialists-label reveal">Our Specialists</span>
+      <div class="contact-grid">
 
-        <div class="team-grid">
-          <!--
-            Place team photos at: images/specialist-ella.jpg, etc.
-          -->
-          <div class="team-card reveal">
-            <img src="images/specialist-ella.jpg" alt="Ella" class="team-photo" onerror="this.style.opacity='0'">
-            <span class="team-name">Ella</span>
+        <!-- LEFT COLUMN -->
+        <div class="contact-col">
+          <div class="contact-card reveal">
+            <p class="contact-card-body" style="font-size:13px;letter-spacing:0.05em;">Walk-Ins Welcome</p>
           </div>
-          <div class="team-card reveal d1">
-            <img src="images/specialist-2.jpg" alt="Name 2" class="team-photo" onerror="this.style.opacity='0'">
-            <span class="team-name">Name 2</span>
+
+          <div class="contact-card reveal d1">
+            <p class="contact-card-title">Cancellation Policy</p>
+            <p class="contact-card-body">We ask that you give us 24 hours notice if you need to cancel your appointment.</p>
           </div>
-          <div class="team-card reveal d2">
-            <img src="images/specialist-3.jpg" alt="Name 3" class="team-photo" onerror="this.style.opacity='0'">
-            <span class="team-name">Name 3</span>
+
+          <div class="contact-map reveal d2" style="flex:1;min-height:160px;">
+            <iframe
+              src="https://www.google.com/maps?q=12235+Sheridan+St,+Cooper+City,+FL+33026&output=embed"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Brow Envy Location"
+            ></iframe>
           </div>
         </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="contact-col">
+          <div class="contact-card reveal d1" style="flex:1;">
+            <p class="contact-card-title">Hours</p>
+            <p class="contact-card-body">
+              Tuesday &ndash; Friday: 10am &ndash; 7pm<br>
+              Saturday: 10am &ndash; 5pm<br>
+              Closed Sunday &amp; Monday
+            </p>
+          </div>
+
+          <div class="contact-card reveal d2" style="flex:1;">
+            <p class="contact-card-body">
+              <strong>Phone</strong>
+              954.538.3383<br><br>
+              <strong>Email</strong>
+              info@browenvy.com<br><br>
+              <strong>Address</strong>
+              Shoppes of Cooper City<br>
+              12235 Sheridan Street<br>
+              Cooper City, FL 33026
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -850,6 +956,40 @@
       }
       window.goTo = goTo;
 
+      /* ── Count-up animation ── */
+      function animateCount(el, target, decimal) {
+        const duration = 1800;
+        const start    = performance.now();
+        const isDecimal = decimal === '1';
+
+        function step(now) {
+          const elapsed  = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          /* ease-out-expo */
+          const eased    = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          const current  = eased * target;
+          el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = isDecimal ? Number(target).toFixed(1) : target;
+        }
+        requestAnimationFrame(step);
+      }
+
+      function triggerStats(section) {
+        section.querySelectorAll('.stat-card').forEach(card => {
+          card.classList.add('in');
+          if (card.dataset.count === 'text') return;
+          const numEl  = card.querySelector('.stat-num');
+          const target = parseFloat(card.dataset.count);
+          const dec    = card.dataset.decimal || '0';
+          if (numEl && !card.dataset.animated) {
+            card.dataset.animated = '1';
+            /* slight delay to let card fade in first */
+            setTimeout(() => animateCount(numEl, target, dec), 300);
+          }
+        });
+      }
+
       /* ── Track active section ── */
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -871,6 +1011,9 @@
           entry.target.querySelectorAll('.reveal:not(.in)').forEach(el => {
             el.classList.add('in');
           });
+
+          /* Trigger stat count-up when About section enters */
+          if (i === 1) triggerStats(entry.target);
         });
       }, { root: snap, threshold: 0.5 });
 
