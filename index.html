@@ -458,21 +458,17 @@
 
     /* ── Unified services layout ── */
     .all-services {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(12px, 2vh, 20px);
-      width: 100%;
-      max-width: 1160px;
-    }
-
-    .svc-row {
       display: grid;
-      gap: clamp(12px, 1.5vw, 20px);
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2.2vh, 32px) clamp(16px, 2vw, 28px);
       width: 100%;
+      max-width: 1100px;
     }
 
-    .svc-row-3 { grid-template-columns: repeat(3, 1fr); }
-    .svc-row-4 { grid-template-columns: repeat(4, 1fr); }
+    /* Center the lone 7th card when it sits by itself in a row */
+    .service-card:last-child:nth-child(3n + 1) {
+      grid-column: 2;
+    }
 
     .service-card {
       display: flex;
@@ -925,47 +921,40 @@
       <h2 class="section-heading reveal">Services</h2>
 
       <div class="all-services">
-        <!-- Row 1: Eyebrow (3 cards) -->
-        <div class="svc-row svc-row-3">
-          <div class="service-card reveal">
-            <img src="images/brow-threading.png" alt="Eyebrow Threading" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Eyebrow Threading</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
-          <div class="service-card reveal d1">
-            <img src="images/brow-tinting.png" alt="Eyebrow Tinting" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Eyebrow Tinting</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
-          <div class="service-card reveal d2">
-            <img src="images/brow-lamination.png" alt="Eyebrow Lamination" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Eyebrow Lamination</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
+        <div class="service-card reveal">
+          <img src="images/brow-threading.png" alt="Eyebrow Threading" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Eyebrow Threading</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
         </div>
-
-        <!-- Row 2: Lash (4 cards) -->
-        <div class="svc-row svc-row-4">
-          <div class="service-card reveal">
-            <img src="images/lash-lamination.png" alt="Lash Lamination" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Lash Lamination</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
-          <div class="service-card reveal d1">
-            <img src="images/lash-lift.png" alt="Lash Lift &amp; Tint" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Lash Lift &amp; Tint</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
-          <div class="service-card reveal d2">
-            <img src="images/lash-removal.png" alt="Lash Removal" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Lash Removal</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
-          <div class="service-card reveal d3">
-            <img src="images/lash-care.png" alt="Lash Care" class="service-photo" onerror="this.style.opacity='0'">
-            <span class="service-name">Lash Care</span>
-            <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
-          </div>
+        <div class="service-card reveal d1">
+          <img src="images/brow-tinting.png" alt="Eyebrow Tinting" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Eyebrow Tinting</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
+        </div>
+        <div class="service-card reveal d2">
+          <img src="images/brow-lamination.png" alt="Eyebrow Lamination" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Eyebrow Lamination</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
+        </div>
+        <div class="service-card reveal d1">
+          <img src="images/lash-lamination.png" alt="Lash Lamination" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Lash Lamination</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
+        </div>
+        <div class="service-card reveal d2">
+          <img src="images/lash-lift.png" alt="Lash Lift &amp; Tint" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Lash Lift &amp; Tint</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
+        </div>
+        <div class="service-card reveal d3">
+          <img src="images/lash-removal.png" alt="Lash Removal" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Lash Removal</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
+        </div>
+        <div class="service-card reveal d2">
+          <img src="images/lash-care.png" alt="Lash Care" class="service-photo" onerror="this.style.opacity='0'">
+          <span class="service-name">Lash Care</span>
+          <a href="#" class="service-btn" onclick="openModal();return false;">Book Now</a>
         </div>
       </div>
     </div>
